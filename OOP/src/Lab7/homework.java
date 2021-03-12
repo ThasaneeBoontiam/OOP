@@ -2,7 +2,7 @@ package Lab7;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class homwork implements ActionListener{
+public class homework implements ActionListener{
     JLabel numberLabel;
     JTextField numberField;
     JButton btnm1,btnm2,btnBack,btnAdd,btnSub,btnMultiply,btnDivide,btnPoint,btnAs,btn1, btn2, btn3,btn4, btn5, btn6,btn7, btn8, btn9,btn0, btnC;
@@ -10,7 +10,7 @@ public class homwork implements ActionListener{
 
     String str =" ", op = " ";
     double num1=0, num2=0, temp=0, result=0;
-    public homwork() {
+    public homework() {
         
         window = new JFrame("Programm Show Text");
         Container container = window.getContentPane();
@@ -185,6 +185,6 @@ public class homwork implements ActionListener{
 
     }
     public static void main(String[] args) {
-        homwork gui = new homwork();
+        homework gui = new homework();
     }
 }
