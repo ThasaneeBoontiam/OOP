@@ -8,18 +8,20 @@ public class homwork implements ActionListener{
     JButton btnm1,btnm2,btnBack,btnAdd,btnSub,btnMultiply,btnDivide,btnPoint,btnAs,btn1, btn2, btn3,btn4, btn5, btn6,btn7, btn8, btn9,btn0, btnC;
     JFrame window;
 
+    String str =" ", op = " ";
+    double num1=0, num2=0, temp=0, result=0;
     public homwork() {
-        // obtain content pane and set its layout to FlowLayout
+        
         window = new JFrame("Programm Show Text");
         Container container = window.getContentPane();
         container.setLayout( new FlowLayout() );
 
-        // create numberLabel and attach it to content pane
+
         numberLabel = new JLabel( "Show Number : " );
         container.add( numberLabel );
         numberField = new JTextField( 15 );
+        numberField.setHorizontalAlignment(SwingConstants.RIGHT);
 
-        //numberField.setEditable( false );
         container.add( numberField );
 
         btnm1 = new JButton(" M+ ");
@@ -34,6 +36,7 @@ public class homwork implements ActionListener{
         btnBack = new JButton(" Back ");
         btnBack.addActionListener( this);
         container.add( btnBack );
+
         btn7 = new JButton(" 7 ");
         btn7.addActionListener( this);
         container.add( btn7 );
@@ -46,6 +49,7 @@ public class homwork implements ActionListener{
         btnAdd = new JButton(" + ");
         btnAdd.addActionListener( this);
         container.add( btnAdd );
+
         btn4 = new JButton(" 4 ");
         btn4.addActionListener( this);
         container.add( btn4 );
@@ -58,6 +62,7 @@ public class homwork implements ActionListener{
         btnSub = new JButton(" - ");
         btnSub.addActionListener( this);
         container.add( btnSub );
+
         btn1 = new JButton(" 1 ");
         btn1.addActionListener( this);
         container.add( btn1 );
@@ -70,66 +75,116 @@ public class homwork implements ActionListener{
         btnMultiply = new JButton(" * ");
         btnMultiply.addActionListener( this);
         container.add( btnMultiply );
+
         btn0 = new JButton(" 0 ");
         btn0.addActionListener( this);
         container.add( btn0 );
+        btnPoint = new JButton(" . ");
+        btnPoint.addActionListener( this);
+        container.add( btnPoint );
+        btnAs = new JButton(" = ");
+        btnAs.addActionListener( this);
+        container.add( btnAs );
+        btnDivide = new JButton(" / ");
+        btnDivide.addActionListener( this);
+        container.add( btnDivide );
         
-
-        window.setSize( 240,120);
+        window.setSize(265,240);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
     }
 
     public void actionPerformed( ActionEvent event )
     {
-        String str = numberField.getText();
+        //String str = numberField.getText();
+        
         if (event.getSource() == btn1) {
-        str += "1";
-        numberField.setText( str );
+            str += "1";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn2) {
-        str += "2";
-        numberField.setText( str );
+            str += "2";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn3) {
-        str += "3";
-        numberField.setText( str );
+            str += "3";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn4) {
-        str += "4";
-        numberField.setText( str );
+            str += "4";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn5) {
-        str += "5";
-        numberField.setText( str );
+            str += "5";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn6) {
-        str += "6";
-        numberField.setText( str );
+            str += "6";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn7) {
-        str += "7";
-        numberField.setText( str );
+            str += "7";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn8) {
-        str += "8";
-        numberField.setText( str );
+            str += "8";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn9) {
-        str += "9";
-        numberField.setText( str );
+            str += "9";
+            numberField.setText( str );
         }
         else if (event.getSource() == btn0) {
-        str += "0";
-        numberField.setText( str );
-        }
-        else if (event.getSource() == btnC) {
-        str = "";
-        numberField.setText( str );
+            str += "0";
+            numberField.setText( str );
+        }else if (event.getSource() == btnPoint){
+            str += ".";
+            numberField.setText( str );
+        }else if (event.getSource() == btnAdd){
+            num1 = Double.parseDouble(numberField.getText());
+            str = "+";
+            op = "+";
+            numberField.setText(str);
+            str = "";
+        }else if (event.getSource() == btnSub){
+            num1 = Double.parseDouble(numberField.getText());
+            str = "-";
+            op = "-";
+            numberField.setText(str);
+            str = "";
+        }else if (event.getSource() == btnMultiply){
+            num1 = Double.parseDouble(numberField.getText());
+            str = "*";
+            op = "*";
+            numberField.setText(str);
+            str = "";
+        }else if (event.getSource() == btnDivide){
+            num1 = Double.parseDouble(numberField.getText());
+            str = "/";
+            op = "/";
+            numberField.setText(str);
+            str = "";
+        }else if (event.getSource() == btnC) {
+            str = "";
+            op = "";
+            numberField.setText( str );
+        }else if (event.getSource() == btnAs){
+            num2 = Double.parseDouble(str);
+            switch(op){
+                case "+": result = num1 + num2; break;
+                case "-": result = num1 - num2; break;
+                case "*": result = num1 * num2; break;
+                case "/": result = num1 / num2; break;
+            }
+            str = Double.toString(result);
+            num1 = result;
+            numberField.setText(str);
+        }else if (event.getSource() == btnBack){
+            str = str.substring(0,str.length()-1);
+            numberField.setText(str);
         }
 
-        } // end method actionPerformed
-
+    }
     public static void main(String[] args) {
         homwork gui = new homwork();
     }
