@@ -96,7 +96,6 @@ public class homwork implements ActionListener{
 
     public void actionPerformed( ActionEvent event )
     {
-        //String str = numberField.getText();
         
         if (event.getSource() == btn1) {
             str += "1";
