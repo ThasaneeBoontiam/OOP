@@ -3,16 +3,17 @@ package Lab8;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class Lab8_3 extends JFrame implements ActionListener{
+public class Calculator extends JFrame implements ActionListener{
     JLabel textLabel;
     JTextField textField;
     JButton saveBtn, clearBtn, showBtn;
     JButton addBtn, subBtn, mulBtn, divBtn;
     JButton perBtn, sqrtBtn, pmBtn;
+    JButton powerBtn,BaseBtn;
     Container container;
-    NumberNew obj;
+    NumNew obj;
 
-    public Lab8_3()
+    public Calculator()
     {
         super("Program Calculate Number");
         container = getContentPane();
@@ -75,14 +76,24 @@ public class Lab8_3 extends JFrame implements ActionListener{
         pmBtn.addActionListener( this);
         container.add( pmBtn );
 
-        setSize(340,120);
+        BaseBtn = new JButton(" 10 -> 16 ");
+        BaseBtn.setFont(new Font("Courier New",Font.BOLD,20));
+        BaseBtn.addActionListener( this);
+        container.add( BaseBtn );
+
+        powerBtn = new JButton(" 10^x ");
+        powerBtn.setFont(new Font("Courier New",Font.BOLD,20));
+        powerBtn.addActionListener( this);
+        container.add(powerBtn );
+
+        setSize(360,230);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
     public static void main(String[] args) {
-        Lab8_3 test = new Lab8_3();
+        Calculator test = new Calculator();
         // create obj of class NumberNew
-        test.obj = new NumberNew();
+        test.obj = new NumNew();
         test.textField.setText(test.obj.toString());
     }
 
@@ -156,6 +167,21 @@ public class Lab8_3 extends JFrame implements ActionListener{
             } else {
             double value = Double.parseDouble(textField.getText());
             obj.pm(value);
+            textField.setText(obj.toString());}
+        }
+        else if(event.getSource() == BaseBtn){
+            if (textField.getText().isEmpty()) { //เช็คค่าว่าง
+                
+            } else {
+            double value = Double.parseDouble(textField.getText());
+            textField.setText(obj.toHex(value));}
+        }
+        else if(event.getSource() == powerBtn){
+            if (textField.getText().isEmpty()) { //เช็คค่าว่าง
+                
+            } else {
+            double value = Double.parseDouble(textField.getText());
+            obj.power(value);
             textField.setText(obj.toString());}
         }
     }

@@ -1,13 +1,16 @@
 package Lab8;
 
-public class NumberNew {
-    private double number;
+import java.text.DecimalFormat;
 
-    public NumberNew() {
+public class NumNew {
+    private double number;
+    DecimalFormat df = new DecimalFormat("0.00");
+
+    public NumNew() {
         setValue((double) (Math.random() * 100));
     }
 
-    public NumberNew(double n) {
+    public NumNew(double n) {
         setValue( n );
     }
 
@@ -20,7 +23,8 @@ public class NumberNew {
     }
 
     public String toString(){
-        return(Double.toString(getValue()));
+        //return(Double.toString(getValue()));
+        return df.format(getValue());
     }
 
     public void add(double n) {
@@ -55,4 +59,13 @@ public class NumberNew {
         }
     }
 
+    public String toHex(double n) {
+        setValue(n);
+        int value =(int)(n);
+        return (Integer.toHexString(value));
+    }
+
+    public void power(double n) {
+        setValue((double)Math.pow(10,n));
+    }
 }
